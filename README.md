@@ -5,7 +5,7 @@ In this challenge, you’ll build a BitTorrent client that's capable of parsing 
 about how torrent files are structured, HTTP trackers, BitTorrent’s Peer
 Protocol, pipelining and more.
 
-# 1. Torrent File Information:
+## 1. Torrent File Information:
 
 ##### Navigate to the `app` directory and run the following command. Make sure that your `main.py` and `sample.torrent` should be in the same directory.
 
@@ -28,7 +28,7 @@ e876f67a2a8886e8f36b136726c30fa29703022d
 f00d937a0213df1982bc8d097227ad9e909acc17
 ```
 
-# 2. Torrent File Information:
+## 2. Torrent File Information:
 
 ```sh
 python main.py peers sample.torrent
@@ -44,7 +44,7 @@ python main.py peers sample.torrent
 178.62.85.20:51489
 ```
 
-# 3. Handshake with Peer:
+## 3. Handshake with Peer:
 
 ```sh
 python main.py handshake sample.torrent "your_any_one_peers_sample"  `for_example: 178.62.82.89:51448`
@@ -56,13 +56,13 @@ python main.py handshake sample.torrent "your_any_one_peers_sample"  `for_exampl
 Peer ID: 2d524e302e302e302d71436ef031d3d90fc6cb18
 ```
 
-# 4. Download a Specific Piece:
+## 4. Download a Specific Piece:
 
 ```sh
 python main.py download_piece -o piece1.dat sample.torrent 0
 ```
 
-# 5. Download Entire Torrent:
+## 5. Download Entire Torrent:
 
 ```sh
 python main.py download -o complete_file.dat sample.torrent
