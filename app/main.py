@@ -292,14 +292,34 @@ def download(outputfile, filename):
     decoded_value = decode_torrentfile(filename)
     total_pieces = len(piece_hashes(decoded_value["info"]["pieces"]))
     piecefiles = []
+
+    # Create a dedicated temporary directory (modify path as needed)
+    temp_dir = os.path.join(
+        "E:", "5THSEM", "computer network", "My Project", "temp")
+    os.makedirs(temp_dir, exist_ok=True)
+
     for piece in range(0, total_pieces):
-        p, o = download_piece("/tmp/test-" + str(piece), filename, piece)
-        piecefiles.append(o)
+        # Construct temporary file name within created directory
+        piece_file = os.path.join(temp_dir, f"test-{piece}")
+
+        p, o = download_piece(piece_file, filename, piece)
+        piecefiles.append(piece_file)  # Store the temporary file path
+
     with open(outputfile, "ab") as result_file:
         for piecefile in piecefiles:
-            with open(piecefile, "rb") as piece_file:
-                result_file.write(piece_file.read())
-            os.remove(piecefile)
+            try:
+                with open(piecefile, "rb") as piece_data:
+                    result_file.write(piece_data.read())
+            except FileNotFoundError:
+                print(f"Error: Temporary file {piecefile} not found")
+                # Handle the error (e.g., log the error, retry download)
+            finally:
+                # Ensure temporary file is removed, even on exceptions
+                try:
+                    os.remove(piecefile)
+                except FileNotFoundError:
+                    # Ignore if the file was already removed or doesn't exist
+                    pass
 
 
 def bytes_to_str(data):
