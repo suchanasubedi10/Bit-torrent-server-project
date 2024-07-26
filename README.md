@@ -19,10 +19,10 @@ python main.py info sample.torrent
 python main.py peers sample.torrent
 ```
 
-# 3. Handshake with Peer:
+## 3. Handshake with Peer:
 
 ```sh
-python main.py handshake sample.torrent "your_any_one_peers_sample"  //for_example: 192.168.1.5:6881"
+python main.py handshake sample.torrent "your_any_one_peers_sample"  `for_example: 192.168.1.5:6881`
 ```
 
 ## 4. Download a Specific Piece:
