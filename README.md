@@ -11,7 +11,7 @@ Protocol, pipelining and more.
 
 ```sh
 python main.py info sample.torrent
-sh```
+```
 
 **Expected output**:
 
